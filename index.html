@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real Estate</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="index.css">
+    <style>
+        /* Styles for the back to top button */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* 20px from the bottom */
+            right: 30px; /* 30px from the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #007bff; /* Set background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Pointer/hand icon */
+            padding: 15px; /* Some padding */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        #backToTopBtn:hover {
+            background-color: #555; /* Add a dark-grey background on hover */
+        }
+
+        /* Add upper margin for search button */
+        .search-button {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h2 class="h2">Real Estate</h2>
+        <div class="mb-5">
+            <div class="row align-items-center">
+                <div class="col-md-2">
+                    <select id="category" class="form-control">
+                        <option value="">Select Category</option>
+                        <option value="rent-house">Rent House</option>
+                        <option value="sell-house">Sell House</option>
+                        <option value="rent-land">Rent Land</option>
+                        <option value="sell-land">Sell Land</option>
+                        <option value="rent-room">Rent Room</option>
+                        <option value="rent-annex">Rent Annex</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <input type="number" id="minPrice" class="form-control" placeholder="Min Price">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" id="maxPrice" class="form-control" placeholder="Max Price">
+                </div>
+                <div class="col-md-2">
+                    <input type="text" id="location" class="form-control" placeholder="Location">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" id="bedrooms" class="form-control" placeholder="Bedrooms">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" id="bathrooms" class="form-control" placeholder="Bathrooms">
+                </div>
+                <div class="col-md-2 mt-3 mt-md-0 search-button">
+                    <button class="btn btn-primary w-100 mt-3" onclick="handleSearch()">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="propertyContainer">
+            <!-- Property cards will be dynamically added here -->
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button onclick="topFunction()" id="backToTopBtn" title="Go to top">Top</button>
+
+    <!-- Modal HTML -->
+    <div class="modal fade" id="propertyModal" tabindex="-1" aria-labelledby="propertyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="propertyModalLabel">Property Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Carousel for images -->
+                    <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner" id="carouselInner">
+                            <!-- Carousel items will be dynamically added here -->
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <h4 class="mt-3">Details:</h4>
+                    <p id="modalLocation"></p>
+                    <p id="modalPrice"></p>
+                    <p id="modalBedrooms"></p>
+                    <p id="modalBathrooms"></p>
+                    <p id="modalPostedTime"></p>
+                    <p id="modalDescription"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
